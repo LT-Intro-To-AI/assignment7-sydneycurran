@@ -166,8 +166,8 @@ class NeuralNet:
         data: List[Tuple[I, O]],
         learning_rate: float = 0.5,
         momentum_factor: float = 0.1,
-        iters: int = 1000,
-        print_interval: int = 100,
+        iters: int = 3000,
+        print_interval: int = 1000,
     ) -> None:
         """Carries out a training cycle on the neural net
 
