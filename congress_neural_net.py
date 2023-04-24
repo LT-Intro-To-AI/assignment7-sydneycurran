@@ -1,3 +1,4 @@
+import csv
 from typing import Tuple
 from neural import *
 
@@ -12,11 +13,12 @@ def parse_line(line: str) -> Tuple[List[float], List[float]]:
         tuple of input list and output list
     """
     tokens = line.split(",")
-    out = int(tokens[0])
+    out = int(tokens[6])
     print(tokens)
-    output = [1 if out == 1 else 0.5 if out == 2 else 1]
-
+    output = [0 if out == 100 else 1]
     inpt = [float(x) for x in tokens[1:]]
+    #inpt = [float(tokens(3)), float(tokens(11)), float(tokens(18))]
+
     return (inpt, output)
 
 
@@ -46,10 +48,13 @@ def normalize(data: List[Tuple[List[float], List[float]]]):
     return data
 
 
-with open("wine_data.txt", "r") as f:
-    training_data = [parse_line(line) for line in f.readlines() if len(line) > 4]
+with open("H117_members.csv", "r") as f:
+    read_csv = csv.reader(f)
+    for row in read_csv:
+        print(row)
+    training_data = [parse_line(line) for line in f.readlines()]
 
-td = normalize(training_data)
+#td = normalize(training_data)
 
 '''
 nn = NeuralNet(13, 3, 1)
