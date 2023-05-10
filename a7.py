@@ -24,5 +24,7 @@ party_test_data = [([1.0, 1.0, 1.0, 0.1, 0.1]),
 nn = NeuralNet(5, 10, 1)
 nn.train(party_training_data)
 
+print(party_training_data)
+
 for i in nn.test(party_test_data):
     print(f"actual: {i[1]}")
